@@ -5,7 +5,7 @@
         # Role: Developers
         # Code ownership rights: PreProd Corp
     # Version:
-        # Version: V 1.1 (04 July 2024)
+        # Version: V 1.1 (19 September 2024)
             # Developers: Akshat Rastogi, Shubh Gupta and Rupal Mishra
             # Unit test: Pass
             # Integration test: Pass
@@ -24,4 +24,4 @@
         # Python 3.11.5
         # Streamlit 1.36.0
 
-def load
+# def load

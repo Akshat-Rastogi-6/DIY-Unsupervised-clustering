@@ -5,7 +5,7 @@
         # Role: Developers
         # Code ownership rights: PreProd Corp
     # Version:
-        # Version: V 1.1 (04 July 2024)
+        # Version: V 1.1 (19 September 2024)
             # Developers: Akshat Rastogi, Shubh Gupta and Rupal Mishra
             # Unit test: Pass
             # Integration test: Pass
@@ -27,7 +27,6 @@
 
 import numpy as np
 import pandas as pd
-from sklearn.cluster import DBSCAN, KMeans
 import streamlit as st # For building the web app
 from train_Kmeans import train_model as train
 from train_gmm import train_model as train_gmm
