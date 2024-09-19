@@ -41,5 +41,6 @@ def train_model(df, eps, minsm, minmax):
     dbscan = DBSCAN(eps=eps, min_samples=minsm).fit(X_pca)
     labels = dbscan.labels_
     evals = evaluate_model(X_pca, labels, 'DBSCAN')
+    joblib.dump(dbscan, 'Code\saved model\dbscan.pkl')
 
     return evals

@@ -40,5 +40,6 @@ def train_model(df,n):
     gmm = GaussianMixture(n_components=n, random_state=42)
     labels = gmm.fit_predict(X_pca)
     evals = evaluate_model(X_pca, labels, 'Gaussian Mixture Model')
+    joblib.dump(gmm, 'Code\saved model\gmm.pkl')
 
     return evals

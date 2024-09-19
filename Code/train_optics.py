@@ -41,5 +41,6 @@ def train_model(df, min_sample, xi, cluster, minmax):
     # optics = OPTICS(min_samples=10, xi=0.02, min_cluster_size=0.25).fit(X_pca)
     labels = optics.labels_
     evals = evaluate_model(X_pca, labels, 'OPTICS')
+    joblib.dump(optics, 'Code\saved model\optics.pkl')
 
     return evals

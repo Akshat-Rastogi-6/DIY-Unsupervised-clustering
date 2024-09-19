@@ -40,5 +40,6 @@ def train_model(df,  n_cluster, threas, minmax):
     birch = Birch(n_clusters=n_cluster, threshold=threas)
     labels = birch.fit_predict(X_pca)
     evals = evaluate_model(X_pca, labels, 'BIRCH')
+    joblib.dump(birch, r'Code\saved model\birch.pkl')
 
     return evals

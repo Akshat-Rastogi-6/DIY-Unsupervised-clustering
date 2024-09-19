@@ -165,34 +165,33 @@ with tab2:
 with tab3:
     algorithm = st.selectbox("Select algorithm:", ("KMeans", "DBSCAN", "Gaussian Mixture Model", "OPTICS", "BIRCH"))
     
-    if algorithm == "KMeans":
-            num_clusters = st.number_input('Number of clusters:', min_value=2, max_value=10, value=3, step=1, key='clusters_option_2')
-            
+    
+    with st.form(key="clustering_form"):
+        st.subheader("Clustering")
+        st.write("Enter customer details for clustering.")
 
-            with st.form(key="clustering_form"):
-                st.subheader("Clustering")
-                st.write("Enter customer details for clustering.")
+        age = st.number_input('Enter age (18-80):', min_value=18, max_value=80, value=30)
 
-                age = st.number_input('Enter age (18-80):', min_value=18, max_value=80, value=30)
+        income = st.number_input('Enter annual income (30000.00-100000.00):', min_value=3000.00, max_value=300000.00, value=50000.00, step=0.01, format="%.2f")
 
-                income = st.number_input('Enter annual income (30000.00-100000.00):', min_value=3000.00, max_value=300000.00, value=50000.00, step=0.01, format="%.2f")
+        purchase_history = st.number_input('Enter Purchase history :', min_value=100, max_value=50000, value=500)
 
-                purchase_history = st.number_input('Enter Purchase history :', min_value=100, max_value=50000, value=500)
+        customer_spending_score = st.number_input('Enter Customer Spending Score :', min_value=0, max_value=100, value=50)
 
-                customer_spending_score = st.number_input('Enter Customer Spending Score :', min_value=0, max_value=100, value=50)
+        freq_of_visit = st.number_input('Enter frequency of visit:', min_value=0, max_value=100, value=50)
 
-                freq_of_visit = st.number_input('Enter frequency of visit:', min_value=0, max_value=100, value=50)
+        gender_opt = ['Male', 'Female', 'Agender', 'Genderqueer', 'Polygender', 'Genderfluid', 'Non-binary', 'Bigender']
 
-                gender_opt = ['Male', 'Female', 'Agender', 'Genderqueer', 'Polygender', 'Genderfluid', 'Non-binary', 'Bigender']
+        gender = preprocess_test(st.radio('Choose an option:', gender_opt,horizontal=True))
 
-                gender = preprocess_test(st.radio('Choose an option:', gender_opt,horizontal=True))
+        region = preprocess_test(st.radio('Choose an option:', ['East', 'West', 'North', 'South'],horizontal=True))
 
-                region = preprocess_test(st.radio('Choose an option:', ['East', 'West', 'North', 'South'],horizontal=True))
+        customer_type = preprocess_test(st.radio('Choose an option:', ['budget', 'regular', 'premium'], horizontal=True))
 
-                customer_type = preprocess_test(st.radio('Choose an option:', ['budget', 'regular', 'premium'], horizontal=True))
+        items = np.array([[age, income, purchase_history, customer_spending_score, freq_of_visit, gender, region, customer_type]])
 
-                items = np.array([[age, income, purchase_history, customer_spending_score, freq_of_visit, gender, region, customer_type]])
+        if st.form_submit_button("Cluster", use_container_width=True):
+            new_cluster = classify(algorithm, items)
+            st.write(f"The Data belong to {new_cluster}")
 
-                if st.form_submit_button("Cluster", use_container_width=True):
-                    new_cluster = classify(algorithm, items)
-                    st.write(f"The Data belong to {new_cluster}")
+    

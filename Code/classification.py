@@ -37,5 +37,24 @@ def classify(algorithm, items):
         model = joblib.load('Code\saved model\kmeans.pkl')
         clusters = model.predict(scaled_data)
         return clusters
-
-        
+    
+    elif(algorithm == 'Gaussian Mixture Model'):
+        model = joblib.load('Code\saved model\gmm.pkl')
+        clusters = model.predict(scaled_data)
+        return clusters
+    
+    elif(algorithm == 'DBSCAN'):
+        model = joblib.load('Code\saved model\dbscan.pkl')
+        clusters = model.predict(scaled_data)
+        return clusters
+    
+    elif(algorithm == 'OPTICS'):
+        model = joblib.load('Code\saved model\optics.pkl')
+        clusters = model.predict(scaled_data)
+        return clusters
+    
+    elif(algorithm == 'BIRCH'):
+        model = joblib.load(r'Code\saved model\birch.pkl')
+        clusters = model.predict(scaled_data)
+        return clusters
+    
