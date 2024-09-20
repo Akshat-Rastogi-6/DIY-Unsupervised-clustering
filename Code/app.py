@@ -162,7 +162,7 @@ with tab2:
 
 
 with tab3:
-    algorithm = st.selectbox("Select algorithm:", ("KMeans", "DBSCAN", "Gaussian Mixture Model", "OPTICS", "BIRCH"))
+    algorithm = st.selectbox("Select algorithm:", ("K-Means", "DBSCAN", "Gaussian Mixture Model", "OPTICS", "BIRCH"))
     
     
     with st.form(key="clustering_form"):
@@ -192,5 +192,6 @@ with tab3:
         if st.form_submit_button("Cluster", use_container_width=True):
             new_cluster = classify(algorithm, items)
             st.write(f"The Data belong to {new_cluster}")
+            st.image(f"Code/saved images/{algorithm}.jpg", caption=f"Cluster graph of {algorithm}", width=600)
 
     

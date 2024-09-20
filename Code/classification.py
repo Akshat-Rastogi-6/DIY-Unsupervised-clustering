@@ -33,7 +33,7 @@ from ingest_transform import preprocess_test, scale_back
 
 def classify(algorithm, items):
     scaled_data = scale_back(items)
-    if(algorithm == 'KMeans'):
+    if(algorithm == 'K-Means'):
         model = joblib.load('Code\saved model\kmeans.pkl')
         clusters = model.predict(scaled_data)
         return clusters
